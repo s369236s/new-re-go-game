@@ -21,8 +21,8 @@ export const getExp = async (req: Request, res: Response) => {
     }
     await userRef.set({
       exp: 0,
-      site: [false, false, false, false, false],
-      shop: [false, false, false, false, false, false],
+      site: [false, false, false, false, false, false],
+      shop: [false, false, false, false, false, false, false],
     });
 
     return res.status(200).send({
