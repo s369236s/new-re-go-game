@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "dev": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
-    "start": "nodemon dist/main.js",
+    "start": "node dist/main.js",
     "watch-node": "nodemon dist/main.js",
     "watch-ts": "tsc -w"
   },
