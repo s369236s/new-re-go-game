@@ -1,0 +1,13 @@
+{
+    "type": "service_account",
+    "project_id": "travel-rego",
+    "private_key_id": "60f544b0daf89a174cbc107c0d10127593736684",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC32Wsgposm4kqD\n/QixU8MY0u/Qlf/tQWPiuakzKfzDQ2bYvFzdEQTWRAtdAlkhX4RrtR/z+mDj6Byf\nMcI68XqpuUH66NCvrxsl9j9OjpmFRG7p+2V5V09pEVrGxSe63wthH7ROIxyORIXP\nuwrElOhN2s4aO0cWqpliwFMW0ASdI+92r94pif9Ea/sJccmKx5lRRvo/m7V7VnAI\nI2CjsYVBoq3KwAcmVgPEeA0ztcPEUmwCtcwZyMdW/WtUy7wEi/CziqF91uuGdgtX\npC2RuQ+iUmGo5sIHhCyll38FckMSwD4jpNK5wVFuskR5wyTrlDVN1bmW7/RqVFQ/\n7JLF5X8BAgMBAAECggEAL0H15Yip0C7u1IqgR2Sui5z9A/LqvEPItyjeM0ahsFeN\nAj046aJMSf9npFrMKmXxFfaS5hX//dVWNh2GPbyAuUvjh+l8awxpwBJSJ5FEKRt0\nHzT92nj08p8BZIKdOc3HkQmjQUqJNpCqjMEZfXqBVDHgNKH0HgFwOBATy5Ng/Dsm\nCzkAMVUheInvfAxSzQZ2nchihVp7ec3+5yfnWRq6AD6F0mfsr+Ks6lTA+9EPSr23\nbLR0YTZAPgTeQV+lQfBIJ4Ud2z0nKHABuUx3UV9jxcH6y+UKiblArA0Z6VzM7jpe\nKTnMmzE7AamdPYfVmRugzM4krOi5hUsygeZB/UkOuQKBgQD2g3JqVSEs6K1BFIbr\nY2R5dlRlP1PPoPu2n0ckZl/zJgS1mKc4llX8ej2Yaj9uOmqgbsbDDREOoTsk7lI9\ngewoaKsaUxl5BVx3w4w/8oiL85lywUmQfE4DCz+Mby9UPA8DNVywyCaPBS0ct7E+\nabCTWNy0nLgJQ8Wj3Qrehm2IlwKBgQC+7KD/klClp8RRfw5x7zOn84UxcA0LYkeg\ncIHO/eryf+fqI9ixBf7M81cBb9z0UIng4H7Wof+ULG0zbnBlp7XoNUZbXYLnhgGA\ntwrhWHRNv3kCJTkaV6NMM2Anfnu7pCjSFMpO6QlD5y+GSxCq5Hchkgd+kE7b1RAa\n9S6KCf3QJwKBgQCul0phpQlqFSEgBrnH3Q08OWJskv15ADtGjGiGjztFqpeLRiKp\nIVClEK6vVBC4sQbzuYFsg8Sg5/BLp773cR0hQYBtlI1l+TYUXJrob43mERGNBPhl\nLKTT4xOPEvAiaKb5TsHnMtqcUL4yqKcP3SsCMN2fzZ9KcIV6GQOptuu84QKBgFsT\niE3CX2RWnoj94kcpg2vH+C64NBDNJjv7z4CNkilyKJCB3xm7MWxVXJjb4vxM+yji\nDr+WcdQeSU1yjn1/vn/yAgkNl6eYPllHeBI9XuXDxBbo6M+PJN/x1hmg9adyTOLC\ndiukcP4KZ5pZbq8G42mJPrf6YRPvFIq3kSbaU1CbAoGAMFMOknlP5rDYF+ywW+qu\nBJg7vM5NALC5GO9wfuygZLSG0+17RLBef3czKbsCu8QtaljAOjpVEGol2ZLwSvlc\nwuh4F5eMKP3pDk6KXpsybhwBhUKhMuwaL9/kZFKddspdgWiMmRw89KOwSdp6srcc\nlV80Hm5UP3p6afAm/mQ+Wig=\n-----END PRIVATE KEY-----\n",
+    "client_email": "firebase-adminsdk-5yu3d@travel-rego.iam.gserviceaccount.com",
+    "client_id": "107221502333660712961",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "databaseURL": "https://travel-rego-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-5yu3d%40travel-rego.iam.gserviceaccount.com"
+}
