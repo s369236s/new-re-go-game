@@ -84,6 +84,10 @@ export const sendAnswer = async (req: Request, res: Response) => {
 
     if (check.length <= 1) {
       console.log("抽");
+
+      const lotRef = realtime.ref(`/users/${userId}/lot`);
+      let currLot = (await (await lotRef.get()).val()) as number;
+      lotRef.set(currLot++);
       return;
     }
     console.log("不抽");

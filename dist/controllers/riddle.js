@@ -61,6 +61,9 @@ const sendAnswer = async (req, res) => {
         const check = sites.filter((site) => site === false);
         if (check.length <= 1) {
             console.log("抽");
+            const lotRef = realtime.ref(`/users/${userId}/lot`);
+            let currLot = (await (await lotRef.get()).val());
+            lotRef.set(currLot++);
             return;
         }
         console.log("不抽");

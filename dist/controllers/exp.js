@@ -20,6 +20,7 @@ const getExp = async (req, res) => {
         }
         await userRef.set({
             exp: 0,
+            lot: 0,
             site: [false, false, false, false, false, false],
             shop: [false, false, false, false, false, false, false],
         });
@@ -71,7 +72,9 @@ const addExp = async (req, res) => {
             const shops = doc.val();
             const check = shops.filter((shop) => shop === false);
             if (check.length <= 1) {
-                console.log("抽");
+                const lotRef = realtime.ref(`/users/${userId}/lot`);
+                let currLot = (await (await lotRef.get()).val());
+                lotRef.set(++currLot);
                 return;
             }
             console.log("不抽");
