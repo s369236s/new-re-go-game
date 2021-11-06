@@ -49,11 +49,45 @@ export const sendAnswer = async (req: Request, res: Response) => {
 
   const userRef = realtime.ref(`/users/${userId}/site`);
 
+  let lot = false;
+
+  await userRef.once("value", async (doc) => {
+    const sites = doc.val() as boolean[];
+
+    const check = sites.filter((site: boolean) => site === false);
+
+    console.log(check.length);
+
+    if (check.length <= 1) {
+      console.log("不抽");
+      lot = false;
+      return;
+    }
+    lot = true;
+  });
+
+  if (!lot)
+    return res
+      .status(200)
+      .send({ status: "success", message: "success" } as ApiResponse); //
+
   let ans = {} as any;
 
   ans[siteId] = true;
 
   await userRef.update({ ...ans });
+
+  await userRef.once("value", async (doc) => {
+    const sites = doc.val() as boolean[];
+
+    const check = sites.filter((site: boolean) => site === false);
+
+    if (check.length <= 1) {
+      console.log("抽");
+      return;
+    }
+    console.log("不抽");
+  });
 
   return res
     .status(200)

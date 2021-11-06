@@ -37,9 +37,34 @@ const sendAnswer = async (req, res) => {
         return res.status(500).send(null);
     }
     const userRef = realtime.ref(`/users/${userId}/site`);
+    let lot = false;
+    await userRef.once("value", async (doc) => {
+        const sites = doc.val();
+        const check = sites.filter((site) => site === false);
+        console.log(check.length);
+        if (check.length <= 1) {
+            console.log("不抽");
+            lot = false;
+            return;
+        }
+        lot = true;
+    });
+    if (!lot)
+        return res
+            .status(200)
+            .send({ status: "success", message: "success" }); //
     let ans = {};
     ans[siteId] = true;
     await userRef.update(Object.assign({}, ans));
+    await userRef.once("value", async (doc) => {
+        const sites = doc.val();
+        const check = sites.filter((site) => site === false);
+        if (check.length <= 1) {
+            console.log("抽");
+            return;
+        }
+        console.log("不抽");
+    });
     return res
         .status(200)
         .send({ status: "success", message: "success" }); //

@@ -1,4 +1,4 @@
-import { AddExpRequest, Shop } from "../common/type";
+import { AddExpRequest, ApiResponse, Shop } from "../common/type";
 import { Response, Request } from "express";
 import admin from "firebase-admin";
 
@@ -61,11 +61,47 @@ export const addExp = async (req: Request, res: Response) => {
 
     await userRef.child("exp").set(exp + amount);
 
+    const shopRef = realtime.ref(`/users/${userId}/shop`);
+
+    let lot = false;
+
+    await shopRef.once("value", async (doc) => {
+      const shops = doc.val() as boolean[];
+
+      const check = shops.filter((shop: boolean) => shop === false);
+
+      console.log(check.length);
+
+      if (check.length <= 1) {
+        console.log("不抽");
+        lot = false;
+        return;
+      }
+      lot = true;
+    });
+
+    if (!lot)
+      return res
+        .status(200)
+        .send({ status: "success", message: "success" } as ApiResponse); //
+
     let ans = {} as any;
 
     ans[shopId] = true;
 
     await userRef.child("shop").update({ ...ans });
+
+    await shopRef.once("value", async (doc) => {
+      const shops = doc.val() as boolean[];
+
+      const check = shops.filter((shop: boolean) => shop === false);
+
+      if (check.length <= 1) {
+        console.log("抽");
+        return;
+      }
+      console.log("不抽");
+    });
 
     return res.status(200).send({ ...req.body }); //
   }

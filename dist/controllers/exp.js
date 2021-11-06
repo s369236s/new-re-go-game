@@ -47,9 +47,35 @@ const addExp = async (req, res) => {
         const userRef = realtime.ref(`/users/${userId}`);
         const exp = (await userRef.child("exp").get()).val();
         await userRef.child("exp").set(exp + amount);
+        const shopRef = realtime.ref(`/users/${userId}/shop`);
+        let lot = false;
+        await shopRef.once("value", async (doc) => {
+            const shops = doc.val();
+            const check = shops.filter((shop) => shop === false);
+            console.log(check.length);
+            if (check.length <= 1) {
+                console.log("不抽");
+                lot = false;
+                return;
+            }
+            lot = true;
+        });
+        if (!lot)
+            return res
+                .status(200)
+                .send({ status: "success", message: "success" }); //
         let ans = {};
         ans[shopId] = true;
         await userRef.child("shop").update(Object.assign({}, ans));
+        await shopRef.once("value", async (doc) => {
+            const shops = doc.val();
+            const check = shops.filter((shop) => shop === false);
+            if (check.length <= 1) {
+                console.log("抽");
+                return;
+            }
+            console.log("不抽");
+        });
         return res.status(200).send(Object.assign({}, req.body)); //
     }
     return res.status(500).send(null);
