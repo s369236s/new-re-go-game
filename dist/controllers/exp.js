@@ -71,10 +71,12 @@ const addExp = async (req, res) => {
         await shopRef.once("value", async (doc) => {
             const shops = doc.val();
             const check = shops.filter((shop) => shop === false);
+            console.log(check);
             if (check.length <= 1) {
                 const lotRef = realtime.ref(`/users/${userId}/lot`);
                 let currLot = (await (await lotRef.get()).val());
-                lotRef.set(++currLot);
+                console.log(currLot);
+                await lotRef.set(++currLot);
                 return;
             }
             console.log("不抽");

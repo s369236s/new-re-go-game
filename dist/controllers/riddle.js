@@ -41,7 +41,7 @@ const sendAnswer = async (req, res) => {
     await userRef.once("value", async (doc) => {
         const sites = doc.val();
         const check = sites.filter((site) => site === false);
-        console.log(check.length);
+        console.log(check.length, siteId, "-----------");
         if (check.length <= 1) {
             console.log("不抽");
             lot = false;
@@ -60,10 +60,11 @@ const sendAnswer = async (req, res) => {
         const sites = doc.val();
         const check = sites.filter((site) => site === false);
         if (check.length <= 1) {
-            console.log("抽");
+            console.log("抽13");
             const lotRef = realtime.ref(`/users/${userId}/lot`);
             let currLot = (await (await lotRef.get()).val());
-            lotRef.set(currLot++);
+            currLot += 1;
+            await lotRef.set(currLot);
             return;
         }
         console.log("不抽");

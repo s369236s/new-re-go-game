@@ -56,7 +56,7 @@ export const sendAnswer = async (req: Request, res: Response) => {
 
     const check = sites.filter((site: boolean) => site === false);
 
-    console.log(check.length);
+    console.log(check.length, siteId, "-----------");
 
     if (check.length <= 1) {
       console.log("不抽");
@@ -83,11 +83,13 @@ export const sendAnswer = async (req: Request, res: Response) => {
     const check = sites.filter((site: boolean) => site === false);
 
     if (check.length <= 1) {
-      console.log("抽");
+      console.log("抽13");
 
       const lotRef = realtime.ref(`/users/${userId}/lot`);
       let currLot = (await (await lotRef.get()).val()) as number;
-      lotRef.set(currLot++);
+      currLot += 1;
+      await lotRef.set(currLot);
+
       return;
     }
     console.log("不抽");

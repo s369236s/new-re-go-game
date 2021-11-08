@@ -96,12 +96,14 @@ export const addExp = async (req: Request, res: Response) => {
       const shops = doc.val() as boolean[];
 
       const check = shops.filter((shop: boolean) => shop === false);
+      console.log(check);
 
       if (check.length <= 1) {
         const lotRef = realtime.ref(`/users/${userId}/lot`);
         let currLot = (await (await lotRef.get()).val()) as number;
+        console.log(currLot);
 
-        lotRef.set(++currLot);
+        await lotRef.set(++currLot);
 
         return;
       }
